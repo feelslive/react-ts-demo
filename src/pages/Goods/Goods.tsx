@@ -1,17 +1,23 @@
-import React from 'react'
-import { useNavigate } from "react-router-dom";
-import { Button } from 'antd';
-export default class Goods extends React.Component {
-
-  handleClick = (e: any) => {
-    const navigate = useNavigate();
-    console.log(navigate);
-    navigate('/');
-  };
+import React, { Component } from 'react'
+import LinkBtn from '../../components/LinkBtn/LinkBtn';
+type StateType = {
+  title: string;
+};
+type propType = {
+  title: string;
+};
+export default class Goods extends Component<propType, StateType> {
+  constructor(props: any) {
+    super(props);
+    this.state = {
+      title: 'home'
+    }
+  }
   render() {
+    const { title } = this.state;
     return (
-      <div className='Goods' onClick={this.handleClick}>
-        <Button type="primary">Goods</Button>
+      <div className='Goods'>
+        <LinkBtn name={title} path="/"></LinkBtn>
       </div>
     );
   }
